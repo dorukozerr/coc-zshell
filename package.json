@@ -1,0 +1,46 @@
+{
+  "name": "coc-zshell",
+  "version": "0.0.0-development",
+  "description": "Zsh language support for coc.nvim",
+  "author": "Doruk Özer <dorukozer@protonmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "coc.nvim"
+  ],
+  "engines": {
+    "coc": "^0.0.82"
+  },
+  "scripts": {
+    "watch": "node esbuild.mjs --watch",
+    "build": "node esbuild.mjs",
+    "prepare": "node esbuild.mjs"
+  },
+  "devDependencies": {
+    "coc.nvim": "^0.0.83-next.18",
+    "esbuild": "^0.27.0",
+    "typescript": "^5.3.3"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "coc-zshell configuration",
+      "properties": {
+        "coc-zshell.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable coc-zshell extension"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "coc-zshell.Command",
+        "title": "coc-zshell command title"
+      }
+    ]
+  }
+}
