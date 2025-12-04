@@ -9,7 +9,7 @@ Zsh completion support for coc.nvim using the native zsh completion system.
 ## What it does
 
 This extension provides zsh autocompletion directly in your Vim/Neovim buffers
-when editing zsh/sh files. It leverages the native zsh completion system,
+when editing zsh files. It leverages the native zsh completion system,
 including brew completions and any custom completion paths you've configured
 beside builtin completions.
 
