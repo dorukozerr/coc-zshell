@@ -1,25 +1,36 @@
 #!/bin/zsh
 #
-# Thanks to: https://raw.githubusercontent.com/Valodim/zsh-capture-completion/master/capture.zsh
+# Huge thanks to (https://github.com/tjdevries/coc-zsh) and the real legen behind
+# (https://github.com/Valodim/vim-zsh-completion) this. Original source code
+# slightly updated to enable complations from brew too, also `~/.zshenv` check
+# and source added.
 
 zmodload zsh/zpty || { echo 'error: missing module zsh/zpty' >&2; exit 1 }
 
-# spawn shell
-zpty z zsh -f -i
+zpty z zsh -d -i
 
-# line buffer for pty output
 local line
 
 setopt rcquotes
 () {
     zpty -w z source $1
-    repeat 4; do
+    repeat 8; do
         zpty -r z line
         [[ $line == ok* ]] && return
     done
     echo 'error initializing.' >&2
     exit 2
 } =( <<< '
+# Source .zshenv to respect ZDOTDIR and other environment settings
+if [[ -f "$HOME/.zshenv" ]]; then
+    source "$HOME/.zshenv"
+fi
+
+# If ZDOTDIR is set, source its .zshenv too
+if [[ -n "$ZDOTDIR" && -f "$ZDOTDIR/.zshenv" ]]; then
+    source "$ZDOTDIR/.zshenv"
+fi
+
 typeset -gx COC_ZSH_CACHE_DIR=${COC_ZSH_CACHE_DIR:-"${XDG_CACHE_HOME:-"$HOME/.cache"}/coc/zsh"}
 
 mkdir -p "$COC_ZSH_CACHE_DIR"
@@ -27,8 +38,18 @@ mkdir -p "$COC_ZSH_CACHE_DIR"
 PROMPT=
 
 # load completion system
-autoload compinit
+autoload -Uz compinit
 compinit -d "$COC_ZSH_CACHE_DIR/compdump"
+
+# Source fpath additions from ZDOTDIR/.zshrc if it exists
+# This loads brew completions and other custom completion paths
+if [[ -n "$ZDOTDIR" && -f "$ZDOTDIR/.zshrc" ]]; then
+    # Extract fpath modifications from .zshrc without executing everything
+    source <(grep -E "^[[:space:]]*(fpath=|fpath\\+=)" "$ZDOTDIR/.zshrc" 2>/dev/null || true)
+    # Re-init completions with new fpath
+    autoload -Uz compinit
+    compinit -d "$COC_ZSH_CACHE_DIR/compdump"
+fi
 
 # never run a command
 bindkey ''^M'' undefined
