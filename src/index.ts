@@ -27,7 +27,7 @@ const getZshCompletions = async (
   opt: CompleteOption
 ): Promise<CompleteResult> => {
   try {
-    const scriptPath = join(__dirname, '../zpty.zsh');
+    const scriptPath = join(__dirname, '../bin/capture.zsh');
     const line = opt.line;
 
     const { stdout } = await execFileAsync(scriptPath, [line], {

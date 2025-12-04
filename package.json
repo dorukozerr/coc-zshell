@@ -1,6 +1,6 @@
 {
   "name": "coc-zshell",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Zsh completion support for coc.nvim using native zsh completion system",
   "author": "Doruk Özer <dorukozer@protonmail.com>",
   "license": "MIT",
@@ -18,7 +18,7 @@
   ],
   "files": [
     "lib",
-    "zpty.zsh"
+    "bin"
   ],
   "engines": {
     "coc": "^0.0.82"
@@ -29,6 +29,7 @@
     "prepare": "node esbuild.mjs"
   },
   "devDependencies": {
+    "@types/node": "^24.10.1",
     "coc.nvim": "^0.0.82",
     "esbuild": "^0.27.0",
     "typescript": "^5.3.3"

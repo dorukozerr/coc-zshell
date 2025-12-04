@@ -4,7 +4,7 @@ Zsh completion support for coc.nvim using the native zsh completion system.
 
 ## Install
 
-`vim :CocInstall coc-zshell `
+`vim -c ":CocInstall coc-zshell"`
 
 ## What it does
 
@@ -13,14 +13,17 @@ when editing zsh/sh files. It leverages the native zsh completion system,
 including brew completions and any custom completion paths you've configured
 beside builtin completions.
 
-## Configuration
+## Custom ZDOTDIR support
 
-Two options are available:
+This extension respects custom zsh configuration directories. If you have a
+custom `ZDOTDIR` set in your `~/.zshenv`:
 
-- `coc-zshell.enabled` (boolean, default: `true`) - Enable/disable the
-  extension
-- `coc-zshell.timeout` (number, default: `5000`) - Timeout for completion
-  requests in milliseconds
+```zsh
+export ZDOTDIR="$HOME/.config/zsh"
+```
+
+The extension will correctly load your zsh configuration and all associated
+completions (tested on macOS).
 
 ## Use with vi-mode in terminal
 
@@ -53,17 +56,14 @@ With this setup, press `ESC` in your terminal to enter normal mode (just like
 in vim), then press `v` to open the current command line in a vim buffer. Edit
 your zsh commands with full autocompletion support, save and close to execute.
 
-## Custom ZDOTDIR support
+## Configuration
 
-This extension respects custom zsh configuration directories. If you have a
-custom `ZDOTDIR` set in your `~/.zshenv`:
+Two options are available:
 
-```zsh
-export ZDOTDIR="$HOME/.config/zsh"
-```
-
-The extension will correctly load your zsh configuration and all associated
-completions (tested on macOS).
+- `coc-zshell.enabled` (boolean, default: `true`) - Enable/disable the
+  extension
+- `coc-zshell.timeout` (number, default: `5000`) - Timeout for completion
+  requests in milliseconds
 
 ## Credits
 
