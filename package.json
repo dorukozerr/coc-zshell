@@ -1,12 +1,24 @@
 {
   "name": "coc-zshell",
-  "version": "0.0.0-development",
-  "description": "Zsh language support for coc.nvim",
+  "version": "0.0.1",
+  "description": "Zsh completion support for coc.nvim using native zsh completion system",
   "author": "Doruk Özer <dorukozer@protonmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dorukozerr/coc-zshell"
+  },
   "keywords": [
-    "coc.nvim"
+    "coc.nvim",
+    "zsh",
+    "shell",
+    "completion",
+    "autocomplete"
+  ],
+  "files": [
+    "lib",
+    "zpty.zsh"
   ],
   "engines": {
     "coc": "^0.0.82"

@@ -4,10 +4,12 @@ tsconfig.json
 *.map
 .tags
 .DS_Store
-webpack.config.js
-esbuild.js
+esbuild.mjs
 yarn.lock
 yarn-error.log
 .github
 .eslintrc.js
 .prettierrc
+.git
+.gitignore
+*.log
