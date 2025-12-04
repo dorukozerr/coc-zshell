@@ -7,7 +7,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dorukozerr/coc-zshell"
+    "url": "git+https://github.com/dorukozerr/coc-zshell.git"
   },
   "keywords": [
     "coc.nvim",
