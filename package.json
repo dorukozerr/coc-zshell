@@ -22,7 +22,8 @@
     "typescript": "^5.3.3"
   },
   "activationEvents": [
-    "*"
+    "onLanguage:zsh",
+    "onLanguage:sh"
   ],
   "contributes": {
     "configuration": {
@@ -33,14 +34,13 @@
           "type": "boolean",
           "default": true,
           "description": "Enable coc-zshell extension"
+        },
+        "coc-zshell.timeout": {
+          "type": "number",
+          "default": 5000,
+          "description": "Timeout for completion requests in milliseconds"
         }
       }
-    },
-    "commands": [
-      {
-        "command": "coc-zshell.Command",
-        "title": "coc-zshell command title"
-      }
-    ]
+    }
   }
 }
