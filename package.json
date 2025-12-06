@@ -1,6 +1,6 @@
 {
   "name": "coc-zshell",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Zsh completion support for coc.nvim using native zsh completion system",
   "author": "Doruk Özer <dorukozer@protonmail.com>",
   "license": "MIT",
