@@ -52,10 +52,10 @@ const getZshCompletions = async (
 const parseCompletion = (raw: string) => {
   const parts = raw.split(' -- ');
   const word = parts[0];
-  const menu = parts.length === 2 ? parts[1] : undefined;
+  const description = parts.length === 2 ? parts[1] : undefined;
 
-  return menu
-    ? { word, menu, filterText: parts[0] }
+  return description
+    ? { word, info: description, filterText: parts[0] }
     : { word, filterText: word };
 };
 
