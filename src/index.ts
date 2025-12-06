@@ -51,19 +51,27 @@ const getZshCompletions = async (
 
 const parseCompletion = (raw: string) => {
   const parts = raw.split(' -- ');
+  const word = parts[0];
+  const menu = parts.length === 2 ? parts[1] : undefined;
 
-  if (parts.length === 2)
-    return { word: parts[0], menu: parts[1], filterText: parts[0] };
-
-  return { word: raw, filterText: raw };
+  return menu
+    ? { word, menu, filterText: parts[0] }
+    : { word, filterText: word };
 };
 
 const getStartColumn = (opt: CompleteOption): number | undefined => {
-  const { col, line, input } = opt;
+  const { col, line } = opt;
 
   if (col > 0 && line[col - 1] === '$') return col - 1;
 
-  if (input.length > 0 && input[0] === '-') return col - input.length;
+  let startCol = col;
+  while (startCol > 0) {
+    const prevChar = line[startCol - 1];
+    if (prevChar === ' ' || prevChar === '\t') break;
+    startCol--;
+  }
+
+  if (startCol < col) return startCol;
 
   return undefined;
 };
