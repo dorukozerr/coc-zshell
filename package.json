@@ -31,7 +31,7 @@
   "devDependencies": {
     "@types/node": "^24.10.1",
     "coc.nvim": "^0.0.82",
-    "esbuild": "^0.27.0",
+    "esbuild": "^0.28.1",
     "typescript": "^5.3.3"
   },
   "activationEvents": [
